@@ -57,75 +57,82 @@ losses = 0
 draws = 0
 
 while True:
-    print("1. First to 3 wins")
-    print("2. First to 5 wins")
-    choice_mode = input("Select Mode :")
-    if choice_mode == "1":
-        mode = 3
-        break
-    elif choice_mode == "2":
-        mode = 5
-        break
-    else:
-        print("Invalid input")
 
-round_no = 1
-
-while wins < mode and losses < mode:
-   
-    print(f"\n----- Round {round_no} -----")
-
-    computer_choice = random.choice((-1,0,1))
-    user = input("Enter Your Choice :")
-    user = user.lower()
-
-    if user not in choices:
-        print("Invalid Input")
-        continue
-    else:
-        round_no += 1
-        user_choice = choices[user]
-
-        print(f"Computer Choice is {rev_choices[computer_choice]}")
-        # print(f"Your Choice is {rev_choices[user_choice]}")
-
-        if user_choice == computer_choice :
-            print("Match is Draw\n")
-            draws += 1
-
+    while True:
+        print("1. First to 3 wins")
+        print("2. First to 5 wins")
+        choice_mode = input("Select Mode :")
+        if choice_mode == "1":
+            mode = 3
+            break
+        elif choice_mode == "2":
+            mode = 5
+            break
         else:
-            if computer_choice == 1 and user_choice == -1:
-                print(random.choice(winning_message),"\n")
-                wins += 1
-            elif computer_choice == 1 and user_choice == 0:
-                print(random.choice(losing_messages),"\n")
-                losses += 1 
-            elif computer_choice == 0 and user_choice == -1:
-                print(random.choice(losing_messages),"\n")
-                losses += 1 
-            elif computer_choice == 0 and user_choice == 1:
-                print(random.choice(winning_message),"\n")
-                wins += 1
-            elif computer_choice == -1 and user_choice == 1:
-                print(random.choice(losing_messages),"\n")
-                losses += 1 
-            elif computer_choice == -1 and user_choice == 0:
-                print(random.choice(winning_message),"\n")
-                wins += 1
-            else :
-                print("Incorrect Input")
-            
-print("\n----- GAME OVER -----")
+            print("Invalid input")
+    
+    round_no = 1
+    
+    while wins < mode and losses < mode:
+       
+        print(f"\n----- Round {round_no} -----")
+    
+        computer_choice = random.choice((-1,0,1))
+        user = input("Enter Your Choice :")
+        user = user.lower()
+    
+        if user not in choices:
+            print("Invalid Input")
+            continue
+        else:
+            round_no += 1
+            user_choice = choices[user]
+    
+            print(f"Computer Choice is {rev_choices[computer_choice]}")
+            # print(f"Your Choice is {rev_choices[user_choice]}")
+    
+            if user_choice == computer_choice :
+                print("Match is Draw\n")
+                draws += 1
+    
+            else:
+                if computer_choice == 1 and user_choice == -1:
+                    print(random.choice(winning_message),"\n")
+                    wins += 1
+                elif computer_choice == 1 and user_choice == 0:
+                    print(random.choice(losing_messages),"\n")
+                    losses += 1 
+                elif computer_choice == 0 and user_choice == -1:
+                    print(random.choice(losing_messages),"\n")
+                    losses += 1 
+                elif computer_choice == 0 and user_choice == 1:
+                    print(random.choice(winning_message),"\n")
+                    wins += 1
+                elif computer_choice == -1 and user_choice == 1:
+                    print(random.choice(losing_messages),"\n")
+                    losses += 1 
+                elif computer_choice == -1 and user_choice == 0:
+                    print(random.choice(winning_message),"\n")
+                    wins += 1
+                else :
+                    print("Incorrect Input")
+                
+    print("\n----- GAME OVER -----")
+    
+    if wins == mode:
+        print(f"Congratulations {user_name}! You are the Winner 🏆")
+    else:
+        print("Computer Wins! Better Luck Next Time 😄")
+    
+    
+    print("\n------ FINALSCORE ------")
+    print(f"{user_name} : {wins}")
+    print(f"Computer : {losses}")
+    print(f"Draws : {draws}")
+    print("------------------------")
 
-if wins == mode:
-    print(f"Congratulations {user_name}! You are the Winner 🏆")
-else:
-    print("Computer Wins! Better Luck Next Time 😄")
+    play = input("Can you play again? (y/n)")
+    if play !="y":
+        break
 
-
-print("\n------ FINALSCORE ------")
-print(f"{user_name} : {wins}")
-print(f"Computer : {losses}")
-print(f"Draws : {draws}")
-print("------------------------")
 print("Thanks for Playing")
